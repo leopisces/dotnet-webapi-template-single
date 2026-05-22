@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddUnifiedResult();
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 // Swagger（从 appsettings.json "Swagger" 节加载配置）
 builder.Services.AddSwaggerServices(builder.Configuration);

@@ -8,7 +8,7 @@ namespace WebApiTemplateSingle.Controllers
     /// 认证管理
     /// </summary>
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class AuthController : ControllerBase
     {
         private readonly IJwtTokenService _tokenService;
@@ -23,8 +23,8 @@ namespace WebApiTemplateSingle.Controllers
         /// </summary>
         /// <param name="request">登录请求</param>
         /// <returns>JWT 令牌</returns>
-        [HttpPost("login")]
-        public async Task<TokenResult> Login([FromBody] LoginRequest request)
+        [HttpPost]
+        public async Task<TokenResult> LoginAsync([FromBody] LoginRequest request)
         {
             if (string.IsNullOrWhiteSpace(request.UserName) || string.IsNullOrWhiteSpace(request.Password))
             {

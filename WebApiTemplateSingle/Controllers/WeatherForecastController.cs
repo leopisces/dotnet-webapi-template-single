@@ -8,7 +8,7 @@ namespace WebApiTemplateSingle.Controllers
     /// 天气预报接口
     /// </summary>
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [Authorize]
     public class WeatherForecastController : ControllerBase
     {
@@ -21,8 +21,8 @@ namespace WebApiTemplateSingle.Controllers
         /// 获取未来5天的天气预报
         /// </summary>
         /// <returns>天气预报列表</returns>
-        [HttpGet(Name = "GetWeatherForecast")]
-        public async Task<IEnumerable<WeatherForecast>> Get()
+        [HttpGet]
+        public async Task<IEnumerable<WeatherForecast>> GetAsync()
         {
             await Task.CompletedTask;
 
