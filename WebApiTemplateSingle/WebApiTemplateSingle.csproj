@@ -12,6 +12,7 @@
     <ProjectReference Include="..\Shared.Common\Shared.Common.csproj" />
     <ProjectReference Include="..\Shared.Jwt\Shared.Jwt.csproj" />
     <ProjectReference Include="..\Shared.Swagger\Shared.Swagger.csproj" />
+    <ProjectReference Include="..\Shared.Entities\Shared.Entities.csproj" />
   </ItemGroup>
 
 </Project>

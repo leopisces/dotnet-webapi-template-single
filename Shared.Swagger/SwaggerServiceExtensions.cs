@@ -1,4 +1,5 @@
 using System.Reflection;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi;
@@ -76,10 +77,44 @@ public static class SwaggerServiceExtensions
 
             if (options.EnableJwtBearer)
             {
-                sgOptions.InferSecuritySchemes();
+                sgOptions.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT 授权令牌，请输入 Bearer {token}",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
+                });
+                sgOptions.OperationFilter<AuthorizeCheckOperationFilter>();
             }
         });
 
         return services;
+    }
+}
+
+/// <summary>
+/// 仅对标有 [Authorize] 的接口添加 JWT 安全要求
+/// </summary>
+public class AuthorizeCheckOperationFilter : IOperationFilter
+{
+    public void Apply(OpenApiOperation operation, OperationFilterContext context)
+    {
+        var hasAuthorize = context.MethodInfo.DeclaringType?.GetCustomAttributes(true).OfType<AuthorizeAttribute>().Any() == true
+            || context.MethodInfo.GetCustomAttributes(true).OfType<AuthorizeAttribute>().Any();
+
+        if (!hasAuthorize) return;
+
+        operation.Security =
+        [
+            new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecuritySchemeReference("Bearer", context.Document),
+                    []
+                }
+            }
+        ];
     }
 }

@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Entities;
 
 namespace WebApiTemplateSingle.Controllers
 {
@@ -6,7 +8,8 @@ namespace WebApiTemplateSingle.Controllers
     /// 天气预报接口
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
+    [Authorize]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries =
