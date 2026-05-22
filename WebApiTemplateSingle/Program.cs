@@ -1,10 +1,11 @@
+using Shared.Common;
 using Shared.Jwt;
 using Shared.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddUnifiedResult();
 
 // Swagger（从 appsettings.json "Swagger" 节加载配置）
 builder.Services.AddSwaggerServices(builder.Configuration);
