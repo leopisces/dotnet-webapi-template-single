@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiTemplateSingle.Controllers
 {
+    /// <summary>
+    /// 天气预报接口
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -11,6 +14,10 @@ namespace WebApiTemplateSingle.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         ];
 
+        /// <summary>
+        /// 获取未来5天的天气预报
+        /// </summary>
+        /// <returns>天气预报列表</returns>
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
