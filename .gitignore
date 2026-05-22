@@ -1,0 +1,87 @@
+## .NET
+bin/
+obj/
+out/
+
+## User-specific
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## Visual Studio
+.vs/
+*.vsidx
+*.vspscc
+*.vsscc
+*.vspx
+*.vsapx
+*.sap
+
+## Rider
+.idea/
+*.sln.iml
+
+## VS Code
+.vscode/
+
+## NuGet
+**/packages/*
+*.nupkg
+*.snupkg
+**/[Pp]ackages/**
+*.nuget.props
+*.nuget.targets
+
+## Test
+TestResults/
+[Tt]est[Rr]esult*/
+*.trx
+
+## Publish
+PublishProfiles/
+*.pubxml
+*.publishproj
+*.publishsettings
+
+## EF
+Migrations/
+
+## Secrets
+appsettings.Development.json
+appsettings.Local.json
+*.pfx
+*.pem
+*.key
+
+## Logs
+*.log
+npm-debug.log*
+
+## OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+## Misc
+*.cache
+*.tmp
+*.temp
+*.swp
+*~
