@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Shared.Jwt/Shared.Jwt.csproj" />
   <Project Path="Shared.Swagger/Shared.Swagger.csproj" />
   <Project Path="WebApiTemplateSingle/WebApiTemplateSingle.csproj" />
 </Solution>

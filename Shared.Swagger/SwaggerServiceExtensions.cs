@@ -30,6 +30,11 @@ public class SwaggerOptions
     /// 是否启用 XML 注释（需要项目开启 GenerateDocumentationFile）
     /// </summary>
     public bool IncludeXmlComments { get; set; } = true;
+
+    /// <summary>
+    /// 是否启用 JWT Bearer 认证输入框（从 ASP.NET Core 认证配置自动推断）
+    /// </summary>
+    public bool EnableJwtBearer { get; set; } = false;
 }
 
 /// <summary>
@@ -67,6 +72,11 @@ public static class SwaggerServiceExtensions
                 {
                     sgOptions.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
                 }
+            }
+
+            if (options.EnableJwtBearer)
+            {
+                sgOptions.InferSecuritySchemes();
             }
         });
 
